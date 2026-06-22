@@ -209,20 +209,54 @@
 
     let statusText = "Safe";
 
+    // Inisialisasi state tracking waktu jika belum ada
+    if (typeof state.warningZoneSince === 'undefined') state.warningZoneSince = null;
+
     if (rounded >= state.settings.thresholdSafe) {
+      // RESET WAKTU KARENA KEMBALI AMAN
+      state.warningZoneSince = null;
       setStatus("safe", "Safe");
       ui.distanceHint.textContent = "Safe distance";
       ui.modeStatus.textContent = "Safe";
-      ui.distanceValue.style.color = "var(--success-text)"; // Perubahan warna angka
+      ui.distanceValue.style.color = "var(--success-text)";
       statusText = "Safe";
-    } else if (rounded >= state.settings.thresholdWarning) {
-      setStatus("warn", "Warning");
-      ui.distanceHint.textContent = "Getting close";
-      ui.modeStatus.textContent = "Warning";
-      ui.distanceValue.style.color = "var(--warn-text)";
-      statusText = "Warning";
-      notify("warning", rounded);
+      
+    } else if (rounded >= state.settings.thresholdDanger) {
+      // ZONA CAUTION/WARNING (35cm - 62cm)
+      if (!state.warningZoneSince) {
+         state.warningZoneSince = Date.now(); // Mulai timer
+      }
+      
+      const elapsedSeconds = (Date.now() - state.warningZoneSince) / 1000;
+      
+      if (elapsedSeconds >= 10) {
+        // WARNING: >= 10 detik
+        setStatus("warn", "Warning");
+        ui.distanceHint.textContent = "Please sit back immediately!";
+        ui.modeStatus.textContent = "Warning";
+        ui.distanceValue.style.color = "var(--warn-text)";
+        statusText = "Warning";
+        notify("warning", rounded);
+      } else if (elapsedSeconds >= 3) {
+        // CAUTION: >= 3 detik
+        setStatus("warn", "Caution");
+        ui.distanceHint.textContent = "Getting close (Caution)";
+        ui.modeStatus.textContent = "Caution";
+        ui.distanceValue.style.color = "var(--warn-text)";
+        statusText = "Caution";
+        // Tidak panggil notify agar passive
+      } else {
+        // BELUM 3 DETIK, MASIH DIANGGAP AMAN SEMENTARA
+        setStatus("safe", "Safe");
+        ui.distanceHint.textContent = "Distance decreasing...";
+        ui.modeStatus.textContent = "Safe";
+        ui.distanceValue.style.color = "var(--success-text)";
+        statusText = "Safe";
+      }
+      
     } else {
+      // DANGER (< 35cm)
+      state.warningZoneSince = null; // Reset
       setStatus("danger", "Danger");
       ui.distanceHint.textContent = "Too close";
       ui.modeStatus.textContent = "Danger";
@@ -232,9 +266,9 @@
       if (ui.alarmOverlay && !state.alarmDismissed) ui.alarmOverlay.classList.remove("hidden");
     }
 
-    if (rounded >= state.settings.thresholdWarning) {
+    if (rounded >= state.settings.thresholdDanger && statusText !== "Warning") {
       if (ui.alarmOverlay) ui.alarmOverlay.classList.add("hidden");
-      state.alarmDismissed = false; // Reset dismiss flag when safe/warning
+      state.alarmDismissed = false; // Reset dismiss flag when safe/caution
     }
 
     state.currentDistance = rounded;
