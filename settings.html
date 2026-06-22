@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionR - Settings & Calibration</title>
+  <link rel="stylesheet" href="css/eye-monitoring-style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <main class="dashboard-wrapper">
+    
+    <header class="dashboard-header">
+      <div class="logo-container">
+        <h1 data-i18n="settingsTitle">System Settings ⚙️</h1>
+        <p data-i18n="settingsDesc">Device configuration, alarm preferences, and sensor calibration.</p>
+      </div>
+      <button class="action-btn" onclick="window.location.href='dashboard.html'" style="margin-top: 0; background-color: var(--text-muted);" data-i18n="backToDashboard">← Back to Dashboard</button>
+    </header>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        
+        <section class="widget-card" style="grid-column: span 2;">
+          <h3>🛠️ Calibration Tool</h3>
+          <p style="margin-bottom: 16px;">Adjust the ultrasonic sensor's zero point to match your ergonomic sitting posture.</p>
+          
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 200px; padding: 1.5rem; background: rgba(108, 93, 211, 0.03); border-radius: 12px; border: 1px dashed var(--primary);">
+                  <strong style="color: var(--text-main); font-size: 15px;">Step 1: Position</strong>
+                  <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5;">Sit upright, make sure your eyes are level with the screen. Keep an ideal viewing distance (around 62-65cm).</p>
+              </div>
+              <div style="flex: 1; min-width: 200px; padding: 1.5rem; background: rgba(108, 93, 211, 0.03); border-radius: 12px; border: 1px dashed var(--primary);">
+                  <strong style="color: var(--text-main); font-size: 15px;">Step 2: Measure</strong>
+                  <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5;">The system will take 10 data samples (Moving Average) to find the most stable distance point.</p>
+              </div>
+              <div style="flex: 1; min-width: 200px; padding: 1.5rem; background: rgba(108, 93, 211, 0.03); border-radius: 12px; border: 1px dashed var(--primary);">
+                  <strong style="color: var(--text-main); font-size: 15px;">Step 3: Save</strong>
+                  <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5;">The measurement result will be saved as your personal threshold limit.</p>
+              </div>
+          </div>
+          
+          <button id="btnStartCalibration" class="action-btn" style="width: max-content; margin-top: 20px;" data-i18n="startCalibration">Start Sensor Calibration</button>
+        </section>
+
+        <section class="widget-card">
+          <h3>🔔 Notification Preferences</h3>
+          <p style="margin-bottom: 20px;">Configure how the system alerts you for close viewing distance.</p>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">
+              <span style="font-weight: 500; font-size: 15px;">Device Buzzer Sound</span>
+              <input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--primary); cursor: pointer;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">
+              <span style="font-weight: 500; font-size: 15px;">Pop-up Notification (Web)</span>
+              <input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--primary); cursor: pointer;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 500; font-size: 15px;">Alarm Sensitivity</span>
+              <select style="padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border-light); outline: none; font-family: 'Inter', sans-serif; cursor: pointer;">
+                  <option value="rendah">Low</option>
+                  <option value="normal" selected>Normal</option>
+                  <option value="tinggi">High</option>
+              </select>
+          </div>
+        </section>
+
+        <section class="widget-card">
+          <h3>☁️ IoT Configuration (HiveMQ)</h3>
+          <p style="margin-bottom: 20px;">Broker connection settings for ESP32 synchronization.</p>
+          
+          <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Host Address</label>
+              <input type="text" value="21a2feb71b754d4f858933c81b2dc8ea.s1.eu.hivemq.cloud" style="width: 100%; padding: 10px 14px; margin-top: 6px; border-radius: 8px; border: 1px solid var(--border-light); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; box-sizing: border-box;">
+          </div>
+          
+          <div style="display: flex; gap: 16px;">
+              <div style="flex: 1;">
+                  <label style="font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Username</label>
+                  <input type="text" value="palapip" style="width: 100%; padding: 10px 14px; margin-top: 6px; border-radius: 8px; border: 1px solid var(--border-light); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; box-sizing: border-box;">
+              </div>
+              <div style="flex: 1;">
+                  <label style="font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Password</label>
+                  <input type="password" value="Aa123456" style="width: 100%; padding: 10px 14px; margin-top: 6px; border-radius: 8px; border: 1px solid var(--border-light); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; box-sizing: border-box;">
+              </div>
+          </div>
+          
+          <button class="action-btn" style="width: 100%; margin-top: 20px; background-color: var(--success-text);">Save Configuration</button>
+        </section>
+
+    </div>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="js/firebase-integration.js"></script>
+  <script src="js/utils.js"></script>
+</body>
+</html>

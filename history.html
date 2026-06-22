@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionR - My Activity</title>
+  <link rel="stylesheet" href="css/eye-monitoring-style.css"> 
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <main class="dashboard-wrapper">
+    
+    <header class="dashboard-header">
+      <div class="logo-container">
+        <h1 data-i18n="historyTitle">My Activity</h1>
+        <p data-i18n="historyDesc">Analysis of viewing distance trends and clinical metrics.</p>
+      </div>
+      <button class="action-btn" onclick="window.location.href='dashboard.html'" style="margin-top: 0; background-color: var(--text-muted);" data-i18n="backToDashboard">← Back to Dashboard</button>
+    </header>
+
+    <section class="main-banner" style="display: block; padding: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div>
+          <h2>Distance History</h2>
+          <p id="chartSubtitle" style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Sitting posture history chart</p>
+        </div>
+        <select id="timeFilter" style="padding: 8px 16px; border-radius: 12px; border: 1px solid var(--border-light); font-family: 'Inter', sans-serif; outline: none; cursor: pointer;">
+          <option value="1h">Last 1 Hour</option>
+          <option value="24h" selected>Last 24 Hours</option>
+          <option value="7d">Last 7 Days</option>
+        </select>
+      </div>
+      
+      <div style="width: 100%; height: 300px; background: rgba(108, 93, 211, 0.02); border-radius: 16px; border: 1px dashed #d1d5db; display: flex; align-items: center; justify-content: center;">
+        <canvas id="historyChart" style="display: none;"></canvas>
+        <span id="chartPlaceholder" style="color: var(--text-muted); font-weight: 500;">Chart.js rendering area</span>
+      </div>
+    </section>
+
+    <section class="widget-grid" style="grid-template-columns: repeat(2, 1fr);">
+      
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: var(--success-bg); color: var(--success-text);">📏</div>
+        <h3>MVD</h3>
+        <p>Mean Viewing Distance</p>
+        <h2 style="font-size: 28px; margin-top: auto; color: var(--text-main);"><span id="mvdValue">--</span> <span style="font-size: 14px; color: var(--text-muted);">cm</span></h2>
+      </div>
+
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: var(--danger-bg); color: var(--danger-text);">⚠️</div>
+        <h3>SVI</h3>
+        <p>Screen-Time Violation Index</p>
+        <h2 style="font-size: 28px; margin-top: auto; color: var(--text-main);"><span id="sviValue">--</span> <span style="font-size: 14px; color: var(--text-muted);">%</span></h2>
+      </div>
+
+    </section>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="js/firebase-integration.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/history-script.js"></script>
+  <script src="js/utils.js"></script>
+</body>
+</html>

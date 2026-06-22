@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Palette berdasarkan gambar referensi */
+  --bg-app: #F4F5FA;           /* Soft lavender/gray background */
+  --bg-card: #FFFFFF;          /* White widget */
+  --primary: #6C5DD3;          /* Vibrant Purple (Aksen utama) */
+  --primary-hover: #5A4BBD;
+  --text-main: #11142D;        /* Dark Navy untuk judul */
+  --text-muted: #808191;       /* Soft Gray untuk deskripsi */
+  --border-light: #F1F1F5;
+  
+  /* Status Colors */
+  --success-bg: #E2F6E9;
+  --success-text: #22C55E;
+  --warn-bg: #FFF4E5;
+  --warn-text: #F59E0B;
+  --danger-bg: #FFE5E5;
+  --danger-text: #EF4444;
+
+  --radius-card: 24px;
+  --radius-btn: 12px;
+  --shadow-card: 0px 8px 24px rgba(149, 157, 181, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Wrapper Dashboard */
+.dashboard-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.logo-container p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Status Badge bergaya Pill (seperti tombol "Active" di referensi) */
+.status-badge {
+  padding: 8px 16px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-card);
+}
+.status-idle { color: var(--text-muted); }
+.status-safe { color: var(--success-text); background-color: var(--success-bg); }
+.status-warn { color: var(--warn-text); background-color: var(--warn-bg); }
+.status-danger { color: var(--danger-text); background-color: var(--danger-bg); }
+
+/* Main Gauge Widget (Seperti banner "Cashback" di referensi) */
+.main-banner {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.banner-content p {
+  color: var(--text-muted);
+  font-size: 15px;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.action-btn {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-btn);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Radar/Gauge Area */
+.radar-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(108, 93, 211, 0.05); /* Soft purple circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: pulse 2s infinite;
+  margin-right: 2rem;
+}
+
+.radar-core {
+  width: 160px;
+  height: 160px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(108, 93, 211, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--primary);
+}
+
+.radar-core .val {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.radar-core .unit {
+  font-size: 16px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Grid Widget Kecil */
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.widget-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.widget-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(149, 157, 181, 0.12);
+}
+
+.widget-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: rgba(108, 93, 211, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.widget-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.widget-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.widget-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 8px;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(108, 93, 211, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(108, 93, 211, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(108, 93, 211, 0); }
+}
+
+/* Menyembunyikan elemen konfigurasi JS agar tidak error */
+.hidden-config { display: none; }
+.alarm-overlay {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  width: calc(100% - 48px);
+  max-width: 500px;
+}
+.alarm-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translate(-50%, -20px);
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+

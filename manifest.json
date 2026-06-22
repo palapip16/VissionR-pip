@@ -1,0 +1,16 @@
+{
+  "name": "VisionR - Eye Monitoring",
+  "short_name": "VisionR",
+  "start_url": "./login.html",
+  "display": "standalone",
+  "background_color": "#F4F5FA",
+  "theme_color": "#6C5DD3",
+  "description": "Web-IoT based viewing distance monitoring",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2855/2855263.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

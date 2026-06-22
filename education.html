@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionR - Eye Care Tips</title>
+  <link rel="stylesheet" href="css/eye-monitoring-style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <main class="dashboard-wrapper">
+    
+    <header class="dashboard-header">
+      <div class="logo-container">
+        <h1 data-i18n="educationTitle">Eye Care Tips 👁️</h1>
+        <p data-i18n="educationDesc">Guidelines for prevention and education of Computer Vision Syndrome (CVS).</p>
+      </div>
+      <button class="action-btn" onclick="window.location.href='dashboard.html'" style="margin-top: 0; background-color: var(--text-muted);" data-i18n="backToDashboard">← Back to Dashboard</button>
+    </header>
+
+    <section class="main-banner">
+      <div class="banner-content" style="max-width: 100%;">
+        <h2>What is Computer Vision Syndrome (CVS)?</h2>
+        <p style="max-width: 900px; margin-top: 12px;">CVS or <em>Digital Eye Strain</em> is a group of eye and vision problems related to prolonged use of computers, tablets, e-readers, and mobile phones. Forcing the eye muscles to focus at a close distance (< 62 cm) continuously triggers accommodative stress on the ciliary muscles of the eyes, which if left unchecked can lead to long-term deterioration of eye health.</p>
+      </div>
+    </section>
+
+    <div style="margin-top: 1rem; margin-bottom: 0.5rem;">
+        <h3 style="color: var(--text-main);">Identification & Treatment</h3>
+    </div>
+    
+    <section class="widget-grid">
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: var(--warn-bg); color: var(--warn-text);">⚠️</div>
+        <h3>Main Causes</h3>
+        <ul style="font-size: 14px; color: var(--text-muted); margin-left: 20px; margin-top: 8px; line-height: 1.6;">
+          <li>Screen distance is too close.</li>
+          <li>Poor room lighting (glare).</li>
+          <li>Slouched sitting posture.</li>
+          <li>Blinking frequency drops drastically when focusing.</li>
+        </ul>
+      </div>
+
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: var(--danger-bg); color: var(--danger-text);">🩺</div>
+        <h3>Common Symptoms</h3>
+        <ul style="font-size: 14px; color: var(--text-muted); margin-left: 20px; margin-top: 8px; line-height: 1.6;">
+          <li>Eyes feel dry, sore, or itchy.</li>
+          <li>Blurred or double vision.</li>
+          <li>Tension headache.</li>
+          <li>Stiff pain in the neck, shoulders, and upper back.</li>
+        </ul>
+      </div>
+
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: var(--success-bg); color: var(--success-text);">🩹</div>
+        <h3>First Aid</h3>
+        <ul style="font-size: 14px; color: var(--text-muted); margin-left: 20px; margin-top: 8px; line-height: 1.6;">
+          <li>Immediately stop staring at digital screens.</li>
+          <li>Close your eyes gently for 1-2 minutes for relaxation.</li>
+          <li>Use eye drops (<em>artificial tears</em>) if dry.</li>
+          <li>Perform light neck stretches.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div style="margin-top: 2rem; margin-bottom: 0.5rem;">
+        <h3 style="color: var(--text-main);">Active Prevention Steps</h3>
+    </div>
+    
+    <section class="widget-grid">
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: rgba(108, 93, 211, 0.1); color: var(--primary);">⏱️</div>
+        <h3>20-20-20 Rule</h3>
+        <p>Every <strong>20 minutes</strong> of work, look at an object <strong>20 feet (6 meters)</strong> away for <strong>20 seconds</strong> to reset the focus muscles of your eyes.</p>
+      </div>
+
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: rgba(108, 93, 211, 0.1); color: var(--primary);">📏</div>
+        <h3>Screen Distance & Position</h3>
+        <p>Ensure the distance from your eyes to the screen remains above the safe limit of <strong>62 cm</strong>. Position the center of the screen about 15-20 degrees below eye level.</p>
+      </div>
+
+      <div class="widget-card">
+        <div class="widget-icon" style="background-color: rgba(108, 93, 211, 0.1); color: var(--primary);">💡</div>
+        <h3>Lighting Optimization</h3>
+        <p>Use proper room lighting of <strong>300-500 Lux</strong>. Position your monitor to avoid external light reflections (<em>glare</em>).</p>
+      </div>
+    </section>
+
+    <!-- Trusted References Section -->
+    <div style="margin-top: 2rem; margin-bottom: 0.5rem;">
+        <h3 style="color: var(--text-main);">📚 Trusted References & Further Reading</h3>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Learn more from credible medical sources. All links open in a new tab.</p>
+    </div>
+
+    <section class="widget-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+      <a href="https://www.halodoc.com/kesehatan/kesehatan-mata" target="_blank" rel="noopener noreferrer" class="widget-card" style="text-decoration:none; color:inherit; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="widget-icon" style="background-color: #E8F5E9; color: #43A047;">🟢</div>
+        <h3>HaloDoc</h3>
+        <p>Konsultasi kesehatan mata online dan artikel terpercaya dari dokter spesialis mata Indonesia.</p>
+        <span class="widget-link">Kunjungi HaloDoc →</span>
+      </a>
+
+      <a href="https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment" target="_blank" rel="noopener noreferrer" class="widget-card" style="text-decoration:none; color:inherit; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="widget-icon" style="background-color: #E3F2FD; color: #1976D2;">🌐</div>
+        <h3>WHO – Eye Health</h3>
+        <p>World Health Organization fact sheets on blindness, visual impairment, and global eye health initiatives.</p>
+        <span class="widget-link">Visit WHO →</span>
+      </a>
+
+      <a href="https://www.aao.org/eye-health/tips-prevention/computer-usage" target="_blank" rel="noopener noreferrer" class="widget-card" style="text-decoration:none; color:inherit; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="widget-icon" style="background-color: #FFF3E0; color: #FB8C00;">👁️</div>
+        <h3>AAO – Computer Use</h3>
+        <p>American Academy of Ophthalmology guidelines on safe computer usage, digital eye strain, and prevention tips.</p>
+        <span class="widget-link">Visit AAO →</span>
+      </a>
+
+      <a href="https://www.mayoclinic.org/diseases-conditions/eyestrain/symptoms-causes/syc-20372397" target="_blank" rel="noopener noreferrer" class="widget-card" style="text-decoration:none; color:inherit; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="widget-icon" style="background-color: #FCE4EC; color: #E53935;">🏥</div>
+        <h3>Mayo Clinic – Eyestrain</h3>
+        <p>Comprehensive overview of eyestrain symptoms, causes, diagnosis, and treatment from Mayo Clinic specialists.</p>
+        <span class="widget-link">Visit Mayo Clinic →</span>
+      </a>
+
+      <a href="https://yankes.kemkes.go.id/view_artikel/362/mengenal-computer-vision-syndrome" target="_blank" rel="noopener noreferrer" class="widget-card" style="text-decoration:none; color:inherit; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="widget-icon" style="background-color: #E8EAF6; color: #3949AB;">🇮🇩</div>
+        <h3>Kemenkes RI – CVS</h3>
+        <p>Artikel resmi Kementerian Kesehatan RI tentang Computer Vision Syndrome dan cara pencegahannya.</p>
+        <span class="widget-link">Kunjungi Kemenkes →</span>
+      </a>
+
+      <a href="https://www.nei.nih.gov/learn-about-eye-health/healthy-vision/keep-your-eyes-healthy" target="_blank" rel="noopener noreferrer" class="widget-card" style="text-decoration:none; color:inherit; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="widget-icon" style="background-color: #F3E5F5; color: #8E24AA;">🔬</div>
+        <h3>NEI – Healthy Vision</h3>
+        <p>National Eye Institute (NIH) tips for keeping your eyes healthy, including comprehensive research-backed guidance.</p>
+        <span class="widget-link">Visit NEI →</span>
+      </a>
+
+    </section>
+
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="js/firebase-integration.js"></script>
+  <script src="js/utils.js"></script>
+</body>
+</html>

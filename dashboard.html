@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionR - Smart Dashboard</title>
+  <link rel="stylesheet" href="css/eye-monitoring-style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+  <main class="dashboard-wrapper">
+
+    <header class="dashboard-header" style="align-items: flex-start;">
+      <div class="logo-container">
+        <h1>VisionR</h1>Web-Based Eye Viewing Distance Monitoring System<h1></h1>
+        <p id="welcomeText" data-i18n="welcome" style="margin-bottom: 6px;">Welcome back! 👋</p>
+        </p>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
+
+        <button id="langToggleBtn" class="action-btn" style="margin-top:0;">EN/ID</button>
+        <button id="logoutBtn" class="action-btn" style="margin-top:0;" data-i18n="logout">Logout</button>
+        <div id="statusBadge" class="status-badge status-idle" data-i18n="statusIdle">Waiting For Connection...</div>
+      </div>
+    </header>
+
+    <section class="main-banner">
+      <div class="banner-content">
+        <h2 data-i18n="liveTracking">Live Distance Tracking</h2>
+        <p id="distanceHint" data-i18n="distanceHint">Real-time ergonomic monitor distance detection via ESP32.</p>
+        <button id="connectMqttBtn" class="action-btn" data-i18n="connectSensor">Connect to Sensor</button>
+      </div>
+
+      <div class="radar-container">
+        <div class="radar-core">
+          <div class="val">
+            <span id="distanceValue">--</span>
+          </div>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="widget-grid">
+
+      <div class="widget-card" onclick="location.href='history.html'">
+        <div class="widget-icon">📊</div>
+        <h3 data-i18n="myActivity">My Activity</h3>
+        <p data-i18n="myActivityDesc">Monitor history charts (Distance History), MVD, and screen-time violation index of the last 24 hours.</p>
+        <span class="widget-link" data-i18n="viewReport">View Report →</span>
+      </div>
+
+      <div class="widget-card" onclick="location.href='education.html'">
+        <div class="widget-icon">👁️</div>
+        <h3 data-i18n="eyeCareTips">Eye Care Tips</h3>
+        <p data-i18n="eyeCareTipsDesc">Guidelines for preventing Computer Vision Syndrome (CVS) and the 20-20-20 ergonomics rule.</p>
+        <span class="widget-link" data-i18n="readTips">Read Tips →</span>
+      </div>
+
+      <div class="widget-card" onclick="location.href='settings.html'">
+        <div class="widget-icon">⚙️</div>
+        <h3 data-i18n="systemSettings">System Settings</h3>
+        <p data-i18n="systemSettingsDesc">Ultrasonic sensor (HC-SR04) calibration, alarm adjustments, and HiveMQ server configuration.</p>
+        <span class="widget-link" data-i18n="configure">Configure →</span>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="hidden-config">
+    <button id="openSettingsBtn"></button>
+    <button id="closeConfigBtn"></button>
+    <div id="confidenceValue"></div>
+    <div id="faceStatus"></div>
+    <div id="modeStatus"></div>
+    <div id="mqttStatus"></div>
+    <div id="browserStatus"></div>
+    <div id="configModal"></div>
+    <div id="settingsMessage"></div>
+    <input id="themeToggle" type="checkbox">
+    <input id="alarmSound" type="checkbox">
+    <input id="desktopNotif" type="checkbox">
+    <input id="vibration" type="checkbox">
+    <select id="alarmSensitivity">
+      <option value="3"></option>
+    </select>
+    <button id="resetSettings"></button>
+    <button id="saveSettings"></button>
+    <input id="mqttHost" value="21a2feb71b754d4f858933c81b2dc8ea.s1.eu.hivemq.cloud">
+    <input id="mqttPort" value="8884">
+    <input id="mqttUser" value="palapip">
+    <input id="mqttPass" value="Aa123456">
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="js/firebase-integration.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+  <script src="js/eye-monitoring-script.js"></script>
+</body>
+
+</html>
